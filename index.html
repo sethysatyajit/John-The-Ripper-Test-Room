@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta name="description" content="John the Ripper Hash Cracking Test Room – 50 hashes, 5 rooms, MD5/SHA training. Hacker-themed challenge.">
+  <meta name="author" content="Satyajit Sethy">
+  <title>John The Ripper Test Room | Satyajit Sethy</title>
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- CryptoJS for hash verification (used in wordlist hints) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+  <div class="scanline"></div> <!-- Hacker scanning effect -->
+  <div class="terminal">
+    <header>
+      <pre class="ascii glitch" data-text="JOHN THE RIPPER">
+   ___       _             _   _            ___     _                 
+  |_  |     | |           | | | |          / _ \   (_)                
+    | | ___ | |__   ___   | |_| | ___ _ __/ /_\ \  _ _ __  _ __   ___ 
+    | |/ _ \| '_ \ / _ \  |  _  |/ _ \ '__|  _  | | | '_ \| '_ \ / _ \
+/\__/ / (_) | | | | (_) | | | | |  __/ |  | | | | | | |_) | |_) |  __/
+\____/ \___/|_| |_|\___/  \_| |_/\___|_|  \_| |_/ |_| .__/| .__/ \___|
+                                                    | |   | |          
+                                                    |_|   |_|          
+      </pre>
+      <h1 class="typewriter">// HASH CRACKING SIMULATOR //</h1>
+      <p class="sub flicker">[ ROOMS: 5 · 50 CHALLENGES ] — prove your john skills</p>
+    </header>
+
+    <main id="app">
+      <!-- Room selection screen -->
+      <section id="room-selector" class="panel active">
+        <h2>> SELECT ROOM_</h2>
+        <div class="room-grid" id="roomGrid"></div>
+        <div class="stats" id="globalStats"></div>
+      </section>
+
+      <!-- Active challenge screen -->
+      <section id="challenge-panel" class="panel">
+        <div class="room-header">
+          <button class="ghost-btn" id="backToRoomsBtn"><i class="fas fa-arrow-left"></i> BACK</button>
+          <h2 id="roomTitle" class="glitch-text">ROOM 1: WARM-UP</h2>
+          <span id="progressIndicator">1/10</span>
+        </div>
+        <div class="hash-card">
+          <div class="hash-type" id="hashTypeLabel">MD5</div>
+          <div class="hash-row">
+            <div class="hash-value" id="hashDisplay">5d41402abc4b2a76b9719d911017c592</div>
+            <button class="copy-btn" id="copyHashBtn" title="Copy hash"><i class="far fa-copy"></i></button>
+          </div>
+        </div>
+        <div class="wordlist-area" id="wordlistContainer">
+          <div class="wordlist-header">
+            <span>[WORDLIST HINT]</span>
+            <span class="badge">20-30 words</span>
+          </div>
+          <div class="wordlist" id="wordlistBox"></div>
+        </div>
+        <div class="input-area">
+          <label for="answerInput">$ > <span>crack</span> _</label>
+          <input type="text" id="answerInput" placeholder="type plaintext..." autocomplete="off" spellcheck="false" />
+          <button class="primary-btn" id="submitAnswerBtn">CHECK</button>
+        </div>
+        <div class="message" id="messageBox"></div>
+        <div class="action-bar">
+          <button class="secondary-btn" id="nextQuestionBtn" disabled>NEXT →</button>
+          <button class="secondary-btn" id="resetRoomBtn"><i class="fas fa-redo-alt"></i> RESET</button>
+        </div>
+      </section>
+
+      <!-- Room completion summary -->
+      <section id="summary-panel" class="panel">
+        <h2>> ROOM COMPLETE_</h2>
+        <div id="summaryScore"></div>
+        <div id="answerKey"></div>
+        <button class="primary-btn" id="summaryBackBtn">CHOOSE ANOTHER ROOM</button>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="copyright">
+          © <span id="currentYear"></span> Satyajit Sethy · White-Hat Training
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/sethysatyajit" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="cursor-blink">>_ <span class="type-cursor">|</span></div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
